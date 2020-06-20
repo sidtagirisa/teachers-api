@@ -1,7 +1,8 @@
-const express = require("express");
-const path = require("path");
-const logger = require("./middleware/logger");
-const cors = require("cors");
+const express = require('express');
+const path = require('path');
+const logger = require('./src/middleware/logger');
+const cors = require('cors');
+import router from './src/routes';
 
 const app = express();
 
@@ -12,18 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Set static folder
-app.use(express.static(path.join(__dirname, "public")));
-
-// DB Connection
-require("./src/database/connection");
-
-// Bootstrap
-require("./src/bootstrap")();
+app.use(express.static(path.join(__dirname, 'public')));
 
 // User routes
-app.use("/api/users", require("./src/routes/api/users"));
+app.use('/api', router);
 
 // App config
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
