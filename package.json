@@ -9,7 +9,7 @@
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "precover": "rm -rf coverage",
-    "cover": "jest --coverage --collectCoverageFrom=src/**/*.js",
+    "cover": "jest --coverage --collectCoverageFrom=src/controllers/*.js",
     "postcover": "cp coverage/coverage-final.json coverage/coverage.json"
   },
   "husky": {
